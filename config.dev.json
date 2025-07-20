@@ -1,7 +1,7 @@
 {
 	"facebookAccount": {
-		"email": "",
-		"password": "",
+		"email": "sapiensbioshi@gmail.com",
+		"password": "Otaku243",
 		"2FASecret": "",
 		"i_user": "",
 		"proxy": null,
@@ -12,7 +12,7 @@
 	"antiInbox": false,
 	"language": "en",
 	"notesLanguage": "change to your language with ISO 639-1 code, available languages: vi (Vietnamese), en (English)",
-	"nickNameBot": "╾⸻⟡⟡ 『𝑺𝑬𝑵𝑷𝑨𝑰』 ⟡⟡⸻╼",
+	"nickNameBot": "╾⸻⟡⟡ 『🃋♕𝐒𝐄𝐍𝐏𝐀𝐈♕🃌』 ⟡⟡⸻╼",
 	"prefix": "$",
 	"adminOnly": {
 		"enable": false,
