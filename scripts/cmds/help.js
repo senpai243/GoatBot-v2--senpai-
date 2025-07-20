@@ -3,13 +3,13 @@ const axios = require("axios");
 const path = require("path");
 const { getPrefix } = global.utils;
 const { commands, aliases } = global.GoatBot;
-const doNotDelete = "╭─❍ ᏦᎽᎾᎿᎯᏦᎯ ❍─╮";
+const doNotDelete = "╭─❍ 🃋♕𝐒𝐄𝐍𝐏𝐀𝐈♕🃌 ❍─╮";
 
 module.exports = {
   config: {
     name: "help",
     version: "1.17",
-    author: "Dan jersey",
+    author: "𝑺𝑬𝑵𝑷𝑨𝑰",
     countDown: 5,
     role: 0,
     shortDescription: {
@@ -34,7 +34,7 @@ module.exports = {
       const categories = {};
       let msg = "";
 
-      msg += `\n\n╭─〔 🎯 ᴅᴀɴ ᴊᴇʀꜱᴇʏ 🎯 〕─╮\n\n`;
+      msg += `\n\n╭─〔 🎯 𝑪𝑰𝑨𝑶 🫩 🎯 〕─╮\n\n`;
 
       for (const [name, value] of commands) {
         if (value.config.role > 1 && role < value.config.role) continue;
@@ -54,10 +54,10 @@ module.exports = {
       });
 
       const totalCommands = commands.size;
-      msg += `\nᏦᎽᎾᎿᎯᏦᎯ 𝐁𝐨𝐭 𝐡𝐚𝐬 ${totalCommands} 𝐜𝐨𝐦𝐦𝐚𝐧𝐝𝐬 ✔\n`;
+      msg += `\n𝑺𝑬𝑵𝑷𝑨𝑰 𝐁𝐨𝐭 𝐡𝐚𝐬 ${totalCommands} 𝐜𝐨𝐦𝐦𝐚𝐧𝐝𝐬 ✔\n`;
       msg += `${prefix}𝐡𝐞𝐥𝐩 𝐭𝐨 𝐥𝐨𝐨𝐤 𝐜𝐦𝐝𝐬\n`;
       msg += `𝐀𝐧𝐲 𝐩𝐫𝐨𝐛𝐥𝐞𝐦 𝐫𝐞𝐥𝐚𝐭𝐞𝐝 𝐭𝐨 𝐛𝐨𝐭 𝐭𝐡𝐞𝐧 𝐮𝐬𝐞 ${prefix}𝐜𝐚𝐥𝐥𝐚𝐝\n`;
-      msg += `Admin : ᎠᎯᏁ ᏠᎬᏒᏕᎬᎽ\n\n`;
+      msg += `Admin : 𝑺𝑨𝑷𝑰𝑬𝑵𝑺 𝑱𝑪\n\n`;
 
       await message.reply({
         body: msg
@@ -78,7 +78,7 @@ module.exports = {
         const guideBody = String(configCommand.guide?.en || "No guide available.");
         const usage = guideBody.replace(/{p}/g, prefix).replace(/{n}/g, configCommand.name);
 
-        const response = `╭─❍ ᏦᎽᎾᎿᎯᏦᎯ ❍─╮      
+        const response = `╭─❍ 🃋♕𝐒𝐄𝐍𝐏𝐀𝐈♕🃌 ❍─╮      
 
 ❐𝙉𝙖𝙢𝙚 ➢ ${configCommand.name}
 ❐𝙊𝙩𝙝𝙚𝙧𝙉𝙖𝙢𝙚 ➢ ${configCommand.aliases ? configCommand.aliases.join(", ") : "Do not have"}
