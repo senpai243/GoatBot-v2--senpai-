@@ -4,7 +4,7 @@ module.exports = {
     version: "1.0",
     author: "Dan Jersey",
     shortDescription: {
-      en: "Parie entre Kyotaka et Ayanokoji"
+      en: "Parie entre Kyotaka et Senpai 😏"
     },
     longDescription: {
       en: "Choisis Kyotaka ou Ayanokoji et mise ton argent pour tenter de doubler ton pari."
