@@ -1,82 +1,72 @@
-<p align="center">
-  <img src="https://files.catbox.moe/gdozbt.jpg" alt="banner">
-</p>
+import streamlit as st
+import random
 
-<h1 align="center">
-  <img src="https://files.catbox.moe/hddjzr.jpg" width="22px">
-  ᏦᎽᎾᎿᎯᏦᎯ - Bot Chat Messenger Intelligent
-</h1>
+# -------------------------
+# Questions/Réponses
+# -------------------------
+questions = {
+    "Quel est le nom du démon renard dans Naruto ?": "kurama",
+    "Quel est le fruit du démon de Luffy ?": "gomu gomu",
+    "Qui est le rival de Light Yagami dans Death Note ?": "l",
+    "Comment s'appelle le père de Goku ?": "bardock",
+    "Quel est le clan de Sasuke ?": "uchiha",
+    "Qui est le Hokage dans Boruto ?": "naruto",
+    "Qui est le capitaine de l’équipage du Chapeau de Paille ?": "luffy",
+    "Quel est le vrai nom de Zoro ?": "roronoa zoro",
+    "Quel est le prénom de l’élève de Jiraya ?": "naruto",
+    "Quel est le nom complet du rival de Yugi ?": "seto kaiba"
+}
 
----
+# -------------------------
+# Interface Streamlit
+# -------------------------
+st.set_page_config(page_title="Quiz Anime Multijoueur 🌀", page_icon="🧠")
+st.title("🎮 Quiz Multijoueur - Spécial Animés 🍥🔥")
+st.markdown("Réponds à **5 questions**. Si tu rates 5 fois... 💀 Game over !")
 
-## 🧠 À propos
+# Nom du joueur
+joueur = st.text_input("Entre ton prénom pour commencer 👇")
 
-**ᏦᎽᎾᎿᎯᏦᎯ** est un bot Messenger interactif, puissant et polyvalent.  
-Il intègre une **intelligence conversationnelle avancée**, des commandes utiles, un moteur d’image IA, des événements automatisés, et une **personnalisation poussée**.
+# Démarrer le quiz
+if joueur:
+    if "score" not in st.session_state:
+        st.session_state.score = 0
+        st.session_state.erreurs = 0
+        st.session_state.questions_restantes = random.sample(list(questions.items()), 5)
+        st.session_state.index = 0
 
-🎯 Il enrichit vos conversations, anime vos groupes, et répond à vos requêtes en temps réel.  
-C’est **bien plus qu’un bot**, c’est **votre assistant numérique personnalisé**.
+    if st.session_state.index < len(st.session_state.questions_restantes):
+        question, bonne_reponse = st.session_state.questions_restantes[st.session_state.index]
+        st.subheader(f"Question {st.session_state.index + 1} :")
+        reponse = st.text_input(question, key=st.session_state.index)
 
----
+        if reponse:
+            if reponse.lower() == bonne_reponse:
+                st.success("✅ Bonne réponse !")
+                st.session_state.score += 1
+            else:
+                st.error(f"❌ Faux ! La bonne réponse était : {bonne_reponse}")
+                st.session_state.erreurs += 1
 
-## ⚙️ Fonctionnalités
+            st.session_state.index += 1
+            st.experimental_rerun()
+    else:
+        st.markdown("### 🏁 Fin du quiz")
+        st.info(f"🔢 Score final de {joueur} : {st.session_state.score} / 5")
 
-- 🤖 Réponses automatiques & réactions intelligentes  
-- 🎮 Commandes personnalisées (jeux, infos, GPT, météo, etc.)  
-- 🎨 Génération d’images IA directement dans Messenger  
-- 🛠️ Dashboard d’administration moderne  
-- 🔐 Système de permissions & modération avancée  
-- 🌍 Support multilingue (FR / EN)  
-- 📢 Notifications automatisées (bienvenue, départ…)
+        if st.session_state.erreurs >= 5:
+            st.error("💀 Tu as perdu ! Trop de mauvaises réponses.")
+        elif st.session_state.score == 5:
+            st.success("🥇 Tu es un vrai Hokage !")
+        elif st.session_state.score >= 3:
+            st.success("🥈 Tu progresses, jeune ninja.")
+        else:
+            st.warning("🥉 Continue ton entraînement.")
 
----
-
-## 📬 Requête de commande
-
-👤 Créateur : **Dan Jersey**  
-📎 Contact : [facebook.com/Danjersey09](https://www.facebook.com/Danjersey09)  
-📋 Faites vos requêtes API ou demandez un bot personnalisé.
-
----
-
-## 📝 Note d’utilisation
-
-🧩 Vous devez utiliser un **compte Facebook dédié au bot** sur **Kiwi Browser**.
-
-1. Autorisez le bot dans vos groupes Messenger.  
-2. Rendez-vous sur :  
-   🔗 [C3C Utility GitHub](https://c3c-fbstate-utility.vi.softonic.com/chrome/extension)  
-3. Téléchargez l'extension `.ZIP` → importez-la dans Kiwi.  
-4. Connectez-vous à Facebook → ouvrez l’extension → **"Import as JSON"**  
-5. Copiez le long **code JSON** généré.  
-6. Collez ce code dans le fichier `account.dev.txt` du bot.  
-7. Modifiez `configs.dev.json` :
-   - Donnez un nom au bot
-   - Définissez un préfixe
-   - Ajoutez votre UID dans `"admin"`
-
-🔧 Ensuite, allez sur [Render.com](https://render.com) :  
-- Liez votre GitHub  
-- Créez un service Web  
-- Choisissez le dossier de votre bot (root: `./`)  
-- Choisissez le **plan Free**  
-- Déployez et attendez le badge **Live ✅**
-
-🕒 Pour garder le bot actif 24h/24 :  
-- Copiez le lien `.render.com`  
-- Collez-le dans [BetterStack](https://betterstack.com) ou [Uptime Robot](https://uptimerobot.com)
-
-📮 Pour de l’aide, contactez :  
-🔗 [facebook.com/Danjersey09](https://www.facebook.com/Danjersey09)  
-⚠️ Aucune réponse garantie.
-
----
-
-## 💎 Crédits & Dédicace
-
-ᏦᎽᎾᎿᎯᏦᎯ est basé sur l’open-source **GoatBot**, développé par **NTKhang**.  
-Un grand merci à lui 🎯 pour cette base incroyable.
-
-### 👥 Contributeur :
-**Dan Jersey**  
-🔗 [facebook.com/Danjersey09](https://www.facebook.com/Danjersey09)
+        # Rejouer
+        if st.button("🔁 Rejouer"):
+            del st.session_state.score
+            del st.session_state.erreurs
+            del st.session_state.questions_restantes
+            del st.session_state.index
+            st.experimental_rerun()
